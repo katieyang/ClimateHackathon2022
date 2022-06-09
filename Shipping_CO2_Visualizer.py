@@ -16,7 +16,6 @@ os.environ['HACKATHON_CONNECTION_STR']='BlobEndpoint=https://stodpdaskuserspace.
 # Opening the "Vessel CO2 Emissions and Traffic" dataset
 store_list=get_zarr_from_blob('zarr/vessel_emissions_and_traffic')
 
-@st.cache(hash_funcs={xa.core.dataset.Dataset: id}, allow_output_mutation=True)
 def load_data():
     return xa.open_mfdataset(store_list, parallel=True, engine="zarr")
 
